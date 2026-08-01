@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảm xúc đang âm thầm tác động tới cuộc sống của bạn như thế nào?</title>
+    <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap)" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 30px;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        /* Question Section */
+        .question-section {
+            display: none;
+        }
+
+        .question-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .question-number {
+            color: #764ba2;
+            font-weight: 700;
+        }
+
+        /* Rating Scale */
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .rating-btn {
+            flex: 1;
+            padding: 18px 10px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .rating-btn:hover {
+            border-color: #764ba2;
+            background: #f8f5ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(118, 75, 162, 0.2);
+        }
+
+        .rating-btn.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(118, 75, 162, 0.4);
+        }
+
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #999;
+            padding: 0 5px;
+        }
+
+        /* Intro Screen */
+        .intro-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .intro-screen h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .intro-screen p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .intro-screen .highlight {
+            background: #f8f5ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(118, 75, 162, 0.5);
+        }
+
+        /* Results Screen */
+        .results-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .results-screen.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .total-score {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .total-score h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .total-score .score-number {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .total-score .score-max {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .result-category {
+            background: #f8f5ff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .result-category h3 {
+            color: #764ba2;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .result-category p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Email Form */
+        .email-form {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .email-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .email-form h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .email-form p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .email-input-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+
+        .submit-email-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .submit-email-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4);
+        }
+
+        .submit-email-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Detailed Results */
+        .detailed-results {
+            display: none;
+            text-align: left;
+        }
+
+        .detailed-results.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .chart-section {
+            margin-bottom: 35px;
+        }
+
+        .chart-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .chart-bar {
+            margin-bottom: 15px;
+        }
+
+        .chart-bar:last-child {
+            margin-bottom: 0;
+        }
+
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .chart-label-name {
+            color: #555;
+            font-weight: 500;
+        }
+
+        .chart-label-score {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        .chart-bar-bg {
+            height: 24px;
+            background: #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .chart-bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+        }
+
+        .highest-section-message {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+            border: 2px solid #ffcdd2;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .highest-section-message p {
+            color: #c62828;
+            font-weight: 500;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .highest-section-message strong {
+            color: #b71c1c;
+        }
+
+        /* Interpretation Section */
+        .interpretation-section {
+            margin-top: 35px;
+        }
+
+        .interpretation-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .interpretation-box {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .interpretation-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .interpretation-header h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .interpretation-header span {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .interpretation-content {
+            padding: 25px;
+        }
+
+        .interpretation-content h5 {
+            color: #764ba2;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            margin-top: 20px;
+        }
+
+        .interpretation-content h5:first-child {
+            margin-top: 0;
+        }
+
+        .interpretation-content p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .interpretation-content ul {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.9rem;
+            padding-left: 20px;
+        }
+
+        .interpretation-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Restart Button */
+        .restart-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: white;
+            color: #764ba2;
+            border: 2px solid #764ba2;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .restart-btn:hover {
+            background: #764ba2;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .rating-scale {
+                gap: 6px;
+            }
+
+            .rating-btn {
+                padding: 14px 8px;
+                font-size: 1rem;
+            }
+
+            .total-score .score-number {
+                font-size: 3rem;
+            }
+
+            .email-input-group {
+                flex-direction: column;
+            }
+
+            .submit-email-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cảm xúc đang âm thầm tác động tới cuộc sống của bạn như thế nào?</h1>
+            <p>Bài đánh giá miễn phí giúp bạn hiểu rõ hơn về bản thân</p>
+        </div>
+
+        <div class="content">
+            <!-- Intro Screen -->
+            <div class="intro-screen" id="introScreen">
+                <h2>Hướng dẫn & Lưu ý</h2>
+                <div class="highlight">
+                    <p>Với mỗi câu, hãy tự đánh giá mức độ trùng khớp với bản thân bạn trên thang điểm từ <strong>1</strong> (ít trùng khớp nhất) tới <strong>5</strong> (trùng khớp nhất).</p>
+                </div>
+                <p>Hãy thật thoải mái để đưa ra lựa chọn, vì bạn sẽ không bị ai đánh giá hay phán xét. Mục tiêu cuối cùng là để bạn có một cái nhìn chuẩn xác nhất về tình hình của mình.</p>
+                <br>
+                <button class="start-btn" onclick="startTest()">Bắt đầu ngay</button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-text">
+                    <span id="progressText">Câu 1/30</span>
+                    <span id="sectionText">Phần I: Giao tiếp & Mối quan hệ</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- Question Sections -->
+            <div id="questionContainer"></div>
+
+            <!-- Results Screen (Initial - Before Email) -->
+            <div class="results-screen" id="resultsScreen">
+                <div class="total-score">
+                    <h2>Tổng điểm của bạn</h2>
+                    <div class="score-number" id="totalScore">0</div>
+                    <div class="score-max">/ 150 điểm</div>
+                </div>
+                <div class="result-category">
+                    <h3 id="resultTitle">Đang tính toán...</h3>
+                    <p id="resultSummary"></p>
+                </div>
+            </div>
+
+            <!-- Email Form -->
+            <div class="email-form" id="emailForm">
+                <h3>📧 Nhận kết quả chi tiết qua email</h3>
+                <p>Nhập email của bạn để xem biểu đồ phân tích từng khía cạnh và luận giải chi tiết dành riêng cho bạn.</p>
+                <div class="email-input-group">
+                    <input type="email" class="email-input" id="emailInput" placeholder="Nhập email của bạn...">
+                    <button class="submit-email-btn" id="submitEmailBtn" onclick="submitEmail()">Xem chi tiết</button>
+                </div>
+            </div>
+
+            <!-- Detailed Results (After Email) -->
+            <div class="detailed-results" id="detailedResults">
+                <div class="chart-section">
+                    <h3>📊 Biểu đồ điểm số theo từng khía cạnh</h3>
+                    <div class="chart-container" id="chartContainer"></div>
+                    <div class="highest-section-message" id="highestSectionMessage"></div>
+                </div>
+
+                <div class="interpretation-section">
+                    <h3>📖 Luận giải chi tiết</h3>
+                    <div class="interpretation-box" id="interpretationBox"></div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button class="restart-btn" onclick="restartTest()">Làm lại bài test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Questions Data
+        const sections = [
+            {
+                id: 1,
+                name: "Giao tiếp & Mối quan hệ",
+                shortName: "Giao tiếp & Mối quan hệ",
+                questions: [
+                    "Tôi thường nói những điều khiến người khác phật ý.",
+                    "Để giữ gìn các mối quan hệ, tôi thường tránh nói những suy nghĩ bên trong mình.",
+                    "Tôi thường nghĩ mình đúng khi tranh luận, có xu hướng muốn tranh luận, giải thích đến cùng.",
+                    "Tôi thường ngại từ chối.",
+                    "Tôi thường cảm thấy khó khăn trong việc đàm phán, quản lý xung đột hay tạo thiện cảm với người khác.",
+                    "Người khác hiếm khi biết tôi cần gì, muốn gì hay điều gì là không thể chấp nhận với tôi. Tôi giữ trong lòng nhiều hơn chia sẻ."
+                ]
+            },
+            {
+                id: 2,
+                name: "Hình ảnh bản thân",
+                shortName: "Hình ảnh bản thân",
+                questions: [
+                    "Khi khó chịu, tôi thường phản ứng nhanh hơn mong muốn.",
+                    "Tôi khó tập trung khi tâm trạng không ổn.",
+                    "Tôi thường để lộ sự tức giận, thất vọng, sốt ruột ra khuôn mặt và hành động.",
+                    "Tôi luôn phản ứng mạnh khi nhận được góp ý, chê bai từ người khác về mình.",
+                    "Tôi hiếm khi thấy mình có lỗi.",
+                    "Tôi luôn thấy ghen tức khi nghe chuyện ai đó thành công."
+                ]
+            },
+            {
+                id: 3,
+                name: "Sức khỏe tinh thần",
+                shortName: "Sức khỏe tinh thần",
+                questions: [
+                    "Tôi luôn thấy không khỏe dù đi khám không có bệnh gì cả.",
+                    "Những cảm xúc buồn, hồi hộp, lo lắng thường ảnh hưởng đến bữa ăn, giấc ngủ của tôi.",
+                    "Tôi không có cách nào giải tỏa cảm xúc cho chính mình. (chơi game, lướt mạng xã hội, ăn uống quá độ không được coi là giải tỏa cảm xúc)",
+                    "Tôi thường xuyên cảm thấy căng thẳng hoặc lo lắng quá mức.",
+                    "Niềm vui hay nỗi buồn của tôi phụ thuộc phần lớn vào thái độ, hành động của người xung quanh.",
+                    "Tôi hiếm khi cho phép mình thư giãn."
+                ]
+            },
+            {
+                id: 4,
+                name: "Công việc & Tài chính",
+                shortName: "Công việc & Tài chính",
+                questions: [
+                    "Tôi thường xuyên mua sắm theo cảm xúc thay vì tính năng, sau đó thường không sử dụng.",
+                    "Tôi thường xuyên căng thẳng trong công việc.",
+                    "Tôi từng bỏ lỡ cơ hội vì sợ.",
+                    "Tôi thường do dự hoặc trì hoãn quá lâu trước các quyết định quan trọng.",
+                    "Trong khoảng thời gian gấp gáp, tôi thường ra quyết định sai lầm.",
+                    "Tôi luôn lo lắng với những thứ liên quan đến tiền."
+                ]
+            },
+            {
+                id: 5,
+                name: "Nuôi dạy con cái",
+                shortName: "Nuôi dạy con cái",
+                questions: [
+                    "Tôi thường thiếu kiên nhẫn với con (khi con lề mề, khi nói mà con không hiểu, khi yêu cầu mà con không làm,…)",
+                    "Tôi thường hay cáu giận với con.",
+                    "Tôi thường xuyên cảm thấy mình là cha/mẹ tệ.",
+                    "Tôi thường thấy rất nhanh các điểm thiếu sót của con và muốn các điểm thiếu sót được cải thiện ngay lập tức.",
+                    "Tôi thường đáp ứng mọi đòi hỏi của con ngay lập tức chỉ để con ngừng khóc, hoặc dùng vật chất để bù đắp cho sự thiếu hụt thời gian chất lượng bên con.",
+                    "Tôi muốn con phải làm theo mọi ý mình từ sở thích, việc học đến các mối quan hệ bè bạn vì đó là những điều tốt cho con."
+                ]
+            }
+        ];
+
+        const interpretations = {
+            low: {
+                title: "Bạn đang sở hữu khoảng lặng an ổn",
+                subtitle: "Điểm số thấp (1-59) – Cảm xúc mang tính trải nghiệm, không làm chủ hành vi",
+                content: `
+                    <h5>📌 Nhận định khách quan</h5>
+                    <p>Kết quả cho thấy cảm xúc hiện tại giống như những cơn gió thoảng qua mặt hồ – chúng có làm xao động, nhưng không làm thay đổi dòng chảy cuộc sống của bạn. Bạn đang có một sự kết nối khá lành mạnh với chính mình. Bạn nhận biết được khi nào mình buồn, mình giận, nhưng không để những trạng thái đó "cầm lái" các quyết định quan trọng trong mối quan hệ hay sự nghiệp. Sự bình tâm này là một điểm tựa rất lớn, giúp bạn giữ được năng lượng tinh thần ổn định.</p>
+                    
+                    <h5>🔍 Cơ chế tác động ẩn</h5>
+                    <p>Dù vậy, "ảnh hưởng ít" không có nghĩa là "hoàn toàn không có". Đôi khi, vì quá quen với việc giữ mọi thứ ở trạng thái bình ổn, bạn có thể vô tình ngó lơ hoặc nén lại những đợt sóng ngầm rất nhỏ. Cảm xúc tiêu cực khi bị tích tụ quá lâu dưới dạng "vi lượng" (mỗi ngày một chút) vẫn có thể bào mòn sức khỏe tinh thần mà bạn không tự nhận ra.</p>
+                    
+                    <h5>💡 Gợi ý thực hành & Lời khuyên</h5>
+                    <ul>
+                        <li><strong>Duy trì "Nhật ký gọi tên":</strong> Đừng chỉ ghi lại những biến cố lớn. Mỗi ngày, hãy dành 3 phút cuối ngày để gọi tên 1 cảm xúc thoáng qua ngắn ngủi nhất (ví dụ: một chút chạnh lòng khi đọc tin nhắn, một chút sốt ruột khi chờ đợi). Việc này giúp giữ cho chiếc "bộ lọc cảm xúc" của bạn luôn nhạy bén.</li>
+                        <li><strong>Tránh bẫy "Tích cực độc hại":</strong> Cho phép mình được quyền không ổn khi gặp chuyện bất ưng. Bạn không cần phải luôn luôn vững vàng hay tích cực trước mặt người khác.</li>
+                    </ul>
+                `
+            },
+            medium: {
+                title: "Cảm xúc bắt đầu phát tín hiệu \"nhắc nhở\"",
+                subtitle: "Điểm số trung bình (60-85) – Cảm xúc đang tạo ra những xung đột ngầm",
+                content: `
+                    <h5>📌 Nhận định khách quan</h5>
+                    <p>Cuộc sống của bạn hiện đang chịu những tác động khá rõ rệt từ thế giới cảm xúc, dù bề ngoài bạn vẫn đang cố gắng vận hành mọi thứ thật bình thường. Có những ngày bạn cảm thấy năng lượng tinh thần bị cạn kiệt mà không rõ lý do, hoặc nhận ra mình vừa có một phản ứng hơi quá đà trong giao tiếp, một quyết định chi tiêu cảm tính để giải tỏa áp lực. Cảm xúc của bạn đang ở trạng thái "xả van" liên tục vì chiếc bình chứa bên trong đã bắt đầu vơi cạn.</p>
+                    
+                    <h5>🔍 Cơ chế tác động ẩn thầm</h5>
+                    <p>Ở mức độ này, cảm xúc tác động theo kiểu "rò rỉ năng lượng". Bạn có xu hướng mang theo sự bực dọc từ việc này sang việc khác (ví dụ: áp lực công việc vô tình biến thành sự thiếu kiên nhẫn khi nói chuyện với con cái, người thân). Bạn bắt đầu phải dùng lý trí để "gồng" và kiểm soát cảm xúc, điều này vô tình làm suy giảm sức đề kháng tinh thần của bạn.</p>
+                    
+                    <h5>💡 Gợi ý thực hành & Lời khuyên</h5>
+                    <ul>
+                        <li><strong>Thực hành "Khoảng dừng 3 giây":</strong> Trước khi phản ứng lại một lời chê bai, một tin nhắn gây khó chịu hoặc trước một quyết định mua sắm, hãy dừng lại hít thở sâu 3 nhịp. Khoảng dừng này tách biệt giữa Cảm xúc phát sinh và Hành vi phản ứng, giúp bạn không bị cảm xúc dắt mũi.</li>
+                        <li><strong>Xác định "Thùng rác cảm xúc":</strong> Hãy trung thực nhìn nhận xem mình có đang vô tình trút những năng lượng tiêu cực lên những người yếu thế hơn hoặc yêu thương mình hơn không (con cái, bạn đời). Nếu có, hãy học cách nói ra trạng thái của mình trước khi bùng nổ: "Hôm nay mẹ/anh/em hơi mệt và dễ gắt, cho mẹ/anh/em xin một góc yên tĩnh nhé".</li>
+                        <li>Tập xây dựng ranh giới cá nhân lành mạnh và học cách nói "không" khi cần.</li>
+                    </ul>
+                `
+            },
+            high: {
+                title: "Cảm xúc đang âm thầm \"cầm lái\" cuộc đời bạn",
+                subtitle: "Điểm số cao (86-120) – Cảm xúc đang thao túng hành vi, các quyết định và sức khỏe",
+                content: `
+                    <h5>📌 Nhận định khách quan</h5>
+                    <p>Nếu kết quả thuộc nhóm này, điều đó có nghĩa là thế giới nội tâm của bạn đang phát đi tín hiệu SOS. Cảm xúc không còn là một vị khách ghé thăm nữa, chúng đã trở thành "chủ nhà" và đang âm thầm định đoạt các mối quan hệ, sức khỏe lẫn sự nghiệp của bạn. Có thể bạn đang rơi vào trạng thái dễ lặp đi lặp lại những chiếc bẫy: xù lông nhím khi bị góp ý, né tránh thực tại bằng cách lướt mạng xã hội, ăn uống hay mua sắm thiếu kiểm soát hoặc đưa ra các quyết định tài chính, công việc trong lúc giận dữ, tổn thương để rồi sau đó phải nuối tiếc.</p>
+                    
+                    <h5>🔍 Cơ chế tác động ẩn thầm</h5>
+                    <p>Bạn đang bị bào mòn nghiêm trọng bởi các cơn bão cảm xúc. Khi bên trong thiếu đi sự an ổn thực sự, bạn sẽ có xu hướng tìm kiếm sự công nhận hoặc giải tỏa từ bên ngoài, dẫn đến việc phụ thuộc cảm xúc vào thái độ của người khác. Bản đồ cuộc sống của bạn đang bị che phủ bởi sương mù của sự lo âu, oán giận hoặc dằn vặt kéo dài.</p>
+                    
+                    <h5>💡 Gợi ý thực hành & Lời khuyên</h5>
+                    <ul>
+                        <li><strong>Chấp nhận và Ôm ấp (Không phán xét):</strong> Bước đầu tiên không phải là tìm cách dập tắt cơn giận hay nỗi buồn, mà là thừa nhận chúng. Khi một cảm xúc tiêu cực ập đến, hãy ngồi xuống, đặt tay lên ngực và tự nói với chính mình: "Mình đang rất tổn thương/giận dữ, và việc mình cảm thấy như vậy lúc này là hoàn toàn hợp lý". Đừng tự trách mình tại sao lại yếu đuối.</li>
+                        <li><strong>Gỡ rối từ việc nhỏ nhất – Tách mình khỏi nguồn kích hoạt:</strong> Khi nhận thấy một cơn bùng nổ cảm xúc sắp xảy ra, hãy ngay lập tức thay đổi trạng thái vật lý: đứng dậy đi uống một cốc nước, đi bộ ra ngoài ban công, hoặc rời khỏi phòng. Đừng cố giải quyết xung đột hay đưa ra bất kỳ quyết định tài chính/sự nghiệp nào trong trạng thái này.</li>
+                        <li><strong>Viết để giải tỏa (Brain Dump):</strong> Viết tự do ra giấy tất cả những suy nghĩ đen tối, lộn xộn nhất bên trong bạn mà không cần ngữ pháp, không cần logic, rồi đốt hoặc xé nó đi. Đây là cách giải phóng năng lượng ứ đọng một cách an toàn.</li>
+                        <li>Tham gia một khóa thiền định hoặc các khóa học về Thấu hiểu bản thân/Quản lý cảm xúc.</li>
+                    </ul>
+                `
+            },
+            critical: {
+                title: "Ảnh hưởng nghiêm trọng",
+                subtitle: "Điểm số tối đa/Cận tối đa (121-150) – Cảm xúc đã làm tê liệt các chức năng cuộc sống",
+                content: `
+                    <h5>📌 Nhận định khách quan</h5>
+                    <p>Nếu kết quả của bạn nằm ở mức độ này, chúng ta không còn dùng từ "ảnh hưởng" nữa, mà chính xác là thế giới cảm xúc đang giam cầm bạn. Bên trong bạn lúc này giống như một căn phòng khóa kín, ngột ngạt và đầy sương mù. Bạn có thể đang trải nghiệm sự bế tắc tột cùng trên mọi phương diện: mối quan hệ rạn nứt, tài chính kiệt quệ do các quyết định sai lầm lúc bất ổn, sự nghiệp dậm chân tại chỗ và con cái dần xa cách. Bạn nhận ra mọi thứ đang lao dốc nhưng cảm thấy hoàn toàn bất lực, không còn chút năng lượng nào để phản kháng hay tự vực dậy.</p>
+                    
+                    <h5>🔍 Cơ chế tác động ẩn thầm</h5>
+                    <p>Hệ thống phòng vệ tinh thần của bạn đã hoàn toàn sụp đổ. Cảm xúc tiêu cực tích tụ lâu ngày không được gọi tên và chuyển hóa, nay đã quay sang tấn công trực diện vào cơ thể bạn. Những cơn mất ngủ triền miên, đau dạ dày co thắt, đau vai gáy kinh niên hay cảm giác trống rỗng, hụt hẫng đến nghẹt thở chính là cách mà cơ thể đang "kêu cứu" thay cho tâm trí đã quá mệt mỏi của bạn.</p>
+                    
+                    <h5>💡 Gợi ý thực hành & Lời khuyên tối thượng</h5>
+                    <p>Khi đã ở vạch báo động này, việc tự loay hoay, tự chịu đựng hay cố gắng "gồng" để mạnh mẽ chỉ làm tình trạng của bạn tệ hơn mà thôi. Bạn cần một điểm tựa, một chiếc phao cứu sinh từ bên ngoài:</p>
+                    <ul>
+                        <li><strong>Tìm kiếm sự đồng hành từ Chuyên gia Tham vấn tâm lý:</strong> Hãy gạt bỏ định kiến rằng "mình có bệnh mới đi gặp bác sĩ". Tham vấn tâm lý thực chất là việc bạn ngồi lại với một người có chuyên môn, người sẽ giúp bạn tháo gỡ từng nút thắt cảm xúc một cách khoa học, an toàn và bảo mật.</li>
+                        <li><strong>Đi khóa thiền định sâu:</strong> Bạn cần "rút phích cắm" hoàn toàn khỏi thực tại đang quá tải. Hãy chủ động đăng ký một khóa thiền (như thiền Vipassana từ 3 - 10 ngày hoặc các khóa thiền chuông, thiền chữa lành).</li>
+                        <li><strong>Hành động ngay lập tức:</strong> Đừng trì hoãn với suy nghĩ "Để qua đợt bận rộn này rồi tính". Sức khỏe tinh thần là nền móng của mọi thứ. Móng đổ thì nhà sập. Hãy yêu thương bản thân bằng cách tìm kiếm sự trợ giúp ngay hôm nay.</li>
+                    </ul>
+                `
+            }
+        };
+
+        // State
+        let currentQuestion = 0;
+        let answers = [];
+        const totalQuestions = 30;
+
+        // Generate questions HTML
+        function generateQuestions() {
+            const container = document.getElementById('questionContainer');
+            let html = '';
+            let questionIndex = 0;
+
+            sections.forEach((section, sectionIndex) => {
+                section.questions.forEach((question, qIndex) => {
+                    html += `
+                        <div class="question-section" id="question-${questionIndex}" data-section="${sectionIndex}" data-question="${qIndex}">
+                            <div class="section-badge">Phần ${toRoman(section.id)}: ${section.name}</div>
+                            <div class="question-text">
+                                <span class="question-number">Câu ${questionIndex + 1}:</span> ${question}
+                            </div>
+                            <div class="rating-scale">
+                                ${[1, 2, 3, 4, 5].map(num => `
+                                    <button class="rating-btn" data-value="${num}" onclick="selectRating(${questionIndex}, ${num})">${num}</button>
+                                `).join('')}
+                            </div>
+                            <div class="scale-labels">
+                                <span>Ít trùng khớp</span>
+                                <span>Rất trùng khớp</span>
+                            </div>
+                        </div>
+                    `;
+                    questionIndex++;
+                });
+            });
+
+            container.innerHTML = html;
+        }
+
+        function toRoman(num) {
+            const romans = ['I', 'II', 'III', 'IV', 'V'];
+            return romans[num - 1] || num;
+        }
+
+        function startTest() {
+            document.getElementById('introScreen').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            generateQuestions();
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            // Hide all questions
+            document.querySelectorAll('.question-section').forEach(q => q.classList.remove('active'));
+            
+            // Show current question
+            const currentQ = document.getElementById(`question-${index}`);
+            if (currentQ) {
+                currentQ.classList.add('active');
+                
+                // Update progress
+                const progress = ((index + 1) / totalQuestions) * 100;
+                document.getElementById('progressFill').style.width = `${progress}%`;
+                document.getElementById('progressText').textContent = `Câu ${index + 1}/${totalQuestions}`;
+                
+                // Update section text
+                const sectionIndex = parseInt(currentQ.dataset.section);
+                const section = sections[sectionIndex];
+                document.getElementById('sectionText').textContent = `Phần ${toRoman(section.id)}: ${section.name}`;
+            }
+        }
+
+        function selectRating(questionIndex, value) {
+            // Store answer
+            answers[questionIndex] = value;
+
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            questionDiv.querySelectorAll('.rating-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if (parseInt(btn.dataset.value) === value) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            // Auto advance after short delay
+            setTimeout(() => {
+                if (questionIndex < totalQuestions - 1) {
+                    currentQuestion = questionIndex + 1;
+                    showQuestion(currentQuestion);
+                } else {
+                    showResults();
+                }
+            }, 300);
+        }
+
+        function showResults() {
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('questionContainer').style.display = 'none';
+            
+            const totalScore = answers.reduce((sum, val) => sum + (val || 0), 0);
+            
+            document.getElementById('totalScore').textContent = totalScore;
+            
+            // Determine category
+            let category, resultTitle, resultSummary;
+            if (totalScore <= 59) {
+                category = 'low';
+                resultTitle = "Bạn đang sở hữu khoảng lặng an ổn";
+                resultSummary = "Cảm xúc hiện tại giống như những cơn gió thoảng qua – chúng có làm xao động, nhưng không làm thay đổi dòng chảy cuộc sống của bạn.";
+            } else if (totalScore <= 85) {
+                category = 'medium';
+                resultTitle = "Cảm xúc bắt đầu phát tín hiệu \"nhắc nhở\"";
+                resultSummary = "Cuộc sống của bạn đang chịu những tác động khá rõ rệt từ thế giới cảm xúc, dù bề ngoài bạn vẫn đang cố gắng vận hành mọi thứ bình thường.";
+            } else if (totalScore <= 120) {
+                category = 'high';
+                resultTitle = "Cảm xúc đang âm thầm \"cầm lái\" cuộc đời bạn";
+                resultSummary = "Thế giới nội tâm của bạn đang phát đi tín hiệu SOS. Cảm xúc đã trở thành \"chủ nhà\" và đang âm thầm định đoạt nhiều khía cạnh trong cuộc sống.";
+            } else {
+                category = 'critical';
+                resultTitle = "Ảnh hưởng nghiêm trọng";
+                resultSummary = "Thế giới cảm xúc đang giam cầm bạn. Bạn cần một điểm tựa, một chiếc phao cứu sinh từ bên ngoài.";
+            }
+
+            document.getElementById('resultTitle').textContent = resultTitle;
+            document.getElementById('resultSummary').textContent = resultSummary;
+
+            // Store category for later use
+            window.resultCategory = category;
+            window.totalScore = totalScore;
+
+            document.getElementById('resultsScreen').classList.add('active');
+            document.getElementById('emailForm').classList.add('active');
+        }
+
+        function submitEmail() {
+            const emailInput = document.getElementById('emailInput');
+            const email = emailInput.value.trim();
+            const submitBtn = document.getElementById('submitEmailBtn');
+
+            if (!email || !validateEmail(email)) {
+                emailInput.style.borderColor = '#e53935';
+                emailInput.focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang gửi...';
+
+            // Submit to Google Form
+            const formData = new FormData();
+            formData.append('entry.1045781291', email); // Email field
+
+            fetch('[docs.google.com](https://docs.google.com/forms/d/e/1FAIpQLSftUGk6dHtJ2m0WFnPJ9yLuziuXy40VNkRLgU8wqSLqHmiDbA/formResponse)', {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                showDetailedResults();
+            }).catch(() => {
+                // Still show results even if form submission fails
+                showDetailedResults();
+            });
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function showDetailedResults() {
+            document.getElementById('emailForm').style.display = 'none';
+            document.getElementById('resultsScreen').style.display = 'none';
+            
+            // Calculate section scores
+            const sectionScores = [];
+            let answerIndex = 0;
+            
+            sections.forEach((section, index) => {
+                let sectionTotal = 0;
+                for (let i = 0; i < 6; i++) {
+                    sectionTotal += answers[answerIndex] || 0;
+                    answerIndex++;
+                }
+                sectionScores.push({
+                    id: section.id,
+                    name: section.shortName,
+                    score: sectionTotal,
+                    maxScore: 30
+                });
+            });
+
+            // Generate chart
+            const chartContainer = document.getElementById('chartContainer');
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe'];
+            
+            let chartHtml = '';
+            sectionScores.forEach((section, index) => {
+                const percentage = (section.score / section.maxScore) * 100;
+                chartHtml += `
+                    <div class="chart-bar">
+                        <div class="chart-label">
+                            <span class="chart-label-name">${toRoman(section.id)}. ${section.name}</span>
+                            <span class="chart-label-score">${section.score}/${section.maxScore}</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: ${percentage}%; background: ${colors[index]};"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            chartContainer.innerHTML = chartHtml;
+
+            // Find highest scoring section
+            const highestSection = sectionScores.reduce((max, section) => 
+                section.score > max.score ? section : max, sectionScores[0]);
+            
+            document.getElementById('highestSectionMessage').innerHTML = `
+                <p>Hiện tại khía cạnh đang bị cảm xúc ảnh hưởng nhiều nhất là <strong>${highestSection.name}</strong></p>
+            `;
+
+            // Generate interpretation
+            const interpretation = interpretations[window.resultCategory];
+            document.getElementById('interpretationBox').innerHTML = `
+                <div class="interpretation-header">
+                    <h4>${interpretation.title}</h4>
+                    <span>${interpretation.subtitle}</span>
+                </div>
+                <div class="interpretation-content">
+                    ${interpretation.content}
+                </div>
+            `;
+
+            document.getElementById('detailedResults').classList.add('active');
+
+            // Animate chart bars
+            setTimeout(() => {
+                document.querySelectorAll('.chart-bar-fill').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 100);
+        }
+
+        function restartTest() {
+            // Reset state
+            currentQuestion = 0;
+            answers = [];
+            
+            // Reset UI
+            document.getElementById('detailedResults').classList.remove('active');
+            document.getElementById('resultsScreen').classList.remove('active');
+            document.getElementById('emailForm').classList.remove('active');
+            document.getElementById('emailForm').style.display = '';
+            document.getElementById('resultsScreen').style.display = '';
+            document.getElementById('questionContainer').style.display = '';
+            document.getElementById('emailInput').value = '';
+            document.getElementById('emailInput').style.borderColor = '';
+            document.getElementById('submitEmailBtn').disabled = false;
+            document.getElementById('submitEmailBtn').textContent = 'Xem chi tiết';
+            document.getElementById('introScreen').style.display = 'block';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('questionContainer').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
